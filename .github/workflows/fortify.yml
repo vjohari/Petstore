@@ -41,7 +41,7 @@ jobs:
 
       # Prepare source+dependencies for upload.  ScanCentral Client documentation is located at https://www.microfocus.com/documentation/fortify-software-security-center/
       - name: Download Fortify ScanCentral Client
-        uses: fortify/gha-setup-scancentral-client@v2.3.0
+        uses: fortify/gha-setup-scancentral-client@v2
         with:
           version: 23.1.0
       - name: Package Code + Dependencies
@@ -51,7 +51,7 @@ jobs:
 
       # Start Fortify on Demand SAST scan and wait until results complete. For more information on FoDUploader commands, see https://github.com/fod-dev/fod-uploader-java
       - name: Download Fortify on Demand Universal CI Tool
-        uses: fortify/gha-setup-fod-uploader@v1
+        uses: fortify/gha-setup-fod-uploader@v2
       - name: Perform SAST Scan
         run: java -jar $FOD_UPLOAD_JAR -z package.zip -aurl $FOD_API_URL -purl $FOD_URL -rid "$FOD_RELEASE_ID" -tc "$FOD_TENANT" -uc "$FOD_USER" "$FOD_PAT" $FOD_UPLOADER_OPTS -n "$FOD_UPLOADER_NOTES"
         env:
@@ -68,7 +68,7 @@ jobs:
 
       # Once scan completes, pull SAST issues from Fortify on Demand and generate SARIF output.
       - name: Export results to GitHub-optimized SARIF
-        uses: fortify/gha-export-vulnerabilities@v2.0.3
+        uses: fortify/gha-export-vulnerabilities@v2
         with:
           fod_base_url:  ${{ secrets.FOD_URL }}
           #"https://ams.fortify.com/"
