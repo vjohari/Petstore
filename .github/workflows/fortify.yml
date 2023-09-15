@@ -68,7 +68,7 @@ jobs:
 
       # Once scan completes, pull SAST issues from Fortify on Demand and generate SARIF output.
       - name: Export results to GitHub-optimized SARIF
-        uses: fortify/gha-export-vulnerabilities@v2
+        uses: fortify/gha-export-vulnerabilities@v1
         with:
           fod_base_url:  ${{ secrets.FOD_URL }}
           #"https://ams.fortify.com/"
