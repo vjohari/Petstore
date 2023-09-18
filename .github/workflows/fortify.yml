@@ -40,9 +40,7 @@ jobs:
           distribution: 'temurin'
 
       # Setting up FCLI
-      - name: Download FCLI
-        uses: fortify/fcli@v1
-        with:
-          version: 1.3.0
-          -name: Download SC Client via FCLI and package it
-          cmd: java -jar fcli.jar -help
+      - name: Download Fortify CI Tools
+        uses: fortifydocker/fortify-ci-tools@vlatest-jdk-11
+          run:|
+            java -jar fcli.jar -help
