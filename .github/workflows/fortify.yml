@@ -41,6 +41,6 @@ jobs:
 
       # Setting up FCLI
       - name: Download Fortify CI Tools
-        uses: fortifydocker/fortify-ci-tools@vlatest-jdk-11
+        uses: fortifydocker/fortify-ci-tools@latest-jdk-11
           run:|
             java -jar fcli.jar -help
